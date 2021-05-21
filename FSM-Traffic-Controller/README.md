@@ -1,7 +1,26 @@
 # FSM-Traffic-Controller
-This is an FSM-based approach at solving a problem statement that had four roads and three traffic lights each with one straight green, one right green and the third one red.
-There are three cpp files. FSM_Basic.cpp has just a simple input format, wherein user enters the input data and the query is handled in an online manner.
-The FSM used has 20 states in total in which any state can transition into the other. This transition occurs in transition(<args>) function using the approach of max traffic in a road.
-There are 12 states wherein two lights can be in the green state out of the total 8 lights and the rest 8 states are those where only one light is green at a time.
-The rest two files form one package where there is a client file which generates traffic randomly and there is a server which handles that traffic using the approach in FSM_Basic.cpp.
-This server-client relation is done using socket programming.
+## _Finite State Machine implementation in CPP_
+
+This is a Traffic Controller made by implementing the concept of Finite State Machines in CPP. There is a basic traffic controller which takes user input and relieves the traffic by implementing FSM and there is another set of server and client files which are connected by Socket Programming. The client generates random traffic and the Traffic Controller relieves that traffic.
+
+## HOW TO RUN???
+
+- Running the FMS_Basic.cpp file is straight forward. Open the terminal and compile & run it. After that give theinput it asks for.
+- Suggested way : 
+```sh
+g++ FMS_Basic.cpp
+./a.out
+```
+- To run the Traffic Generator and Traffic Controller, do the following.
+- First, run the Controller server file (TrafficController.cpp) on a terminal.
+- Suggested way : 
+```sh
+g++ -o server TrafficController.cpp
+./server
+```
+- Next, run the Generator client file (TrafficGeneratorClient.cpp) on another terminal and give the input required.
+- Suggested way : 
+```sh
+g++ -o client TrafficGeneratorClient.cpp.cpp
+./client
+```
