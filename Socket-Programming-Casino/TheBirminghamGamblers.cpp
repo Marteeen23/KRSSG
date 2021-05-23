@@ -49,6 +49,7 @@ int main()
     listen(sockfd,SOMAXCONN);
 
     clilen = sizeof(cli_addr);
+    cout<<"Waiting for GameSetter..."<<endl;
     newsockfd = accept(sockfd, (struct sockaddr *)&cli_addr, &clilen);
     if (newsockfd < 0){
         cout<<"Error in accepting GameSetter."<<endl;
@@ -65,7 +66,7 @@ int main()
 	socklen_t len=sizeof(sockaddr_in);// typedef unsigned int socklen_t
 
     int client;
-
+    cout<<"Waiting for all Gamblers to join..."<<endl;
     //Accepting all the clients here, first.
     while(seed<p)
     {
@@ -100,7 +101,13 @@ int main()
     for(int h=0;h<p;h++)
         win[h]=0;
     while(q<r){
+        cout<<"Round #"<<q+1<<" begins..."<<endl;
         random(cards, p);
+        cout<<"Cards in pack: ";
+        for(int i=0; i<3*p; i++){
+            cout<<cards[i]<<" ";
+        }
+        cout<<endl;
         for(int i=0;i<seed;i++){
             thread t(Play, i, cards, gameCards);
             clients[i].th=(move(t));
@@ -110,7 +117,7 @@ int main()
             if(clients[i].th.joinable())
                 clients[i].th.join();
         }
-        cout<<"Round "<<q+1<<" results."<<endl;
+        cout<<"Result..."<<endl;
         winRound(gameCards, win);
         q++;
     }
@@ -160,6 +167,7 @@ int main()
             str[h] = s[h];
         }
         str[h] = '\0';
+        int counter = 0;
         for(int i=0;i<p;i++){
             for(int j=0;j<k;j++){
                 if((i+1)==arr[j]){
@@ -171,9 +179,13 @@ int main()
                     }
                     str1[h] = '\0';
                     write(clients[i].socket, &str1, sizeof(str1));
+                    counter = 0;
                 }
                 else
-                    write(clients[i].socket, &str, sizeof(str));
+                    counter = 1;
+            }
+            if(counter == 1){
+                write(clients[i].socket, &str, sizeof(str));
             }
         }
     }
