@@ -38,6 +38,7 @@ int main()
     listen(sockfd,1);
 
     clilen = sizeof(cli_addr);
+	cout<<"Waiting for Traffic Generator..."<<endl;
     newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen);
     if (newsockfd < 0) 
           cout<<"Error in accepting"<<endl;
@@ -73,7 +74,7 @@ int main()
         cout<<endl;
         cout<<endl;
     }while(tot(cars)>0 || j<ts);
-    cout<<"Traffic Cleared."<<endl;
+    cout<<"Traffic Cleared in "<<t-1<<" timesteps."<<endl;
     close(newsockfd);
     close(sockfd);
     return 0; 
@@ -236,178 +237,179 @@ void traffic(TrafficStates _state, int arr[]){
 			break;
 
 		case STATE_1:
-		    {arr[0]--;
-		    arr[1]--;
-		    cout<<"A: Go Straight, Go Right"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Stop"<<endl;
-		    cout<<"D: Stop"<<endl;
+            {arr[0]--;
+            arr[1]--;
+            cout<<"A: Go Straight, Go Right"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_2:
-		   {arr[0]--;
-		    arr[2]--;
-		    cout<<"A: Go Straight"<<endl;
-		    cout<<"B: Go Straight"<<endl;
-		    cout<<"C: Stop"<<endl;
-		    cout<<"D: Stop"<<endl;
+           {arr[0]--;
+            arr[2]--;
+            cout<<"A: Go Straight"<<endl;
+            cout<<"B: Go Straight"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_3:
-		    {arr[0]--;
-		    arr[7]--;
-		    cout<<"A: Go Straight"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Stop"<<endl;
-		    cout<<"D: Go Right"<<endl;
+            {arr[0]--;
+            arr[7]--;
+            cout<<"A: Go Straight"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Go Right"<<endl;
 			break;}
 
 		case STATE_4:
-		    {arr[1]--;
-		    arr[4]--;
-		    cout<<"A: Go Right"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Go Straight"<<endl;
-		    cout<<"D: Stop"<<endl;
+            {arr[1]--;
+            arr[4]--;
+            cout<<"A: Go Right"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Go Straight"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_5:
-		    {arr[1]--;
-		    arr[3]--;
-		    cout<<"A: Go Right"<<endl;
-		    cout<<"B: Go Right"<<endl;
-		    cout<<"C: Stop"<<endl;
-		    cout<<"D: Stop"<<endl;
+            {arr[1]--;
+            arr[3]--;
+            cout<<"A: Go Right"<<endl;
+            cout<<"B: Go Right"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_6:
-		    {arr[2]--;
-		    arr[5]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Go Straight"<<endl;
-		    cout<<"C: Go Right"<<endl;
-		    cout<<"D: Stop"<<endl;
+            {arr[2]--;
+            arr[5]--;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Go Straight"<<endl;
+            cout<<"C: Go Right"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_7:
-		   {arr[2]--;
-		    arr[3]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Go Straight, Go Right"<<endl;
-		    cout<<"C: Stop"<<endl;
-		    cout<<"D: Stop"<<endl;
+           {arr[2]--;
+            arr[3]--;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Go Straight, Go Right"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_8:
-		    {arr[3]--;
-		    arr[6]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Go Right"<<endl;
-		    cout<<"C: Stop"<<endl;
-		    cout<<"D: Go Straight"<<endl;
+            {arr[3]--;
+            arr[6]--;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Go Right"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Go Straight"<<endl;
 			break;}
 
 		case STATE_9:
-		    {arr[4]--;
-		    arr[5]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Go Straight, Go Right"<<endl;
-		    cout<<"D: Stop"<<endl;
+            {arr[4]--;
+            arr[5]--;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Go Straight, Go Right"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_10:
-		    {arr[4]--;
-		    arr[6]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Go Straight"<<endl;
-		    cout<<"D: Go Straight"<<endl;
+            {arr[4]--;
+            arr[6]--;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Go Straight"<<endl;
+            cout<<"D: Go Straight"<<endl;
 			break;}
 
 		case STATE_11:
-		    {arr[5]--;
-		    arr[7]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Go Right"<<endl;
-		    cout<<"D: Go Right"<<endl;
+            {arr[5]--;
+            arr[7]--;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Go Right"<<endl;
+            cout<<"D: Go Right"<<endl;
 			break;}
 
 		case STATE_12:
-		    {arr[6]--;
-		    arr[7]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Stop"<<endl;
-		    cout<<"D: Go Straight, Go Right"<<endl;
+            {arr[6]--;
+            arr[7]--;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Go Straight, Go Right"<<endl;
 			break;}
 
 		case STATE_13:
 		    {arr[0]--;
-		    cout<<"A: Go Straight"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Stop"<<endl;
-		    cout<<"D: Stop"<<endl;
+            cout<<"A: Go Straight"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_14:
 		    {arr[1]--;
-		    cout<<"A: Go Right"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Stop"<<endl;
-		    cout<<"D: Stop"<<endl;
+            cout<<"A: Go Right"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_15:
 		    {arr[2]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Go Straight"<<endl;
-		    cout<<"C: Stop"<<endl;
-		    cout<<"D: Stop"<<endl;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Go Straight"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_16:
 		    {arr[3]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Go Right"<<endl;
-		    cout<<"C: Stop"<<endl;
-            	    cout<<"D: Stop"<<endl;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Go Right"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_17:
 		    {arr[4]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Go Straight"<<endl;
-		    cout<<"D: Stop"<<endl;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Go Straight"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_18:
 		    {arr[5]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Go Right"<<endl;
-		    cout<<"D: Stop"<<endl;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Go Right"<<endl;
+            cout<<"D: Stop"<<endl;
 			break;}
 
 		case STATE_19:
 		    {arr[6]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Stop"<<endl;
-		    cout<<"D: Go Straight"<<endl;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Go Straight"<<endl;
 			break;}
 
 		case STATE_20:
 		    {arr[7]--;
-		    cout<<"A: Stop"<<endl;
-		    cout<<"B: Stop"<<endl;
-		    cout<<"C: Stop"<<endl;
-		    cout<<"D: Go Right"<<endl;
+            cout<<"A: Stop"<<endl;
+            cout<<"B: Stop"<<endl;
+            cout<<"C: Stop"<<endl;
+            cout<<"D: Go Right"<<endl;
 			break;}
+
 		default:
-		    cout<<"Error in States."<<endl;
+			cout<<"Error in States."<<endl;
 			break;
 	}
 }
