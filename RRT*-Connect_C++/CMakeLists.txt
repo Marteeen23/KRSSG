@@ -129,19 +129,7 @@ include_directories(
 ## either from message generation or dynamic reconfigure
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-add_executable(talker_node src/talker.cpp)
-target_link_libraries(talker_node ${catkin_LIBRARIES})
-
-add_executable(listener_node src/listener.cpp)
-target_link_libraries(listener_node ${catkin_LIBRARIES})
-
-add_executable(subtsim src/subscriber_tsim.cpp)
-target_link_libraries(subtsim ${catkin_LIBRARIES})
-
-add_executable(pubtsim src/publisher_tsim.cpp)
-target_link_libraries(pubtsim ${catkin_LIBRARIES})
-
-add_executable(turtlesim src/turtle_sim.cpp)
+add_executable(turtlesim src/PID_ROS.cpp)
 target_link_libraries(turtlesim ${catkin_LIBRARIES})
 
 ## Declare a C++ executable
