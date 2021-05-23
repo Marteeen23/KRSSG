@@ -43,6 +43,7 @@ int main()
     while(q<r){
         int a[3], b[3];
         read(sockfd, &a, sizeof(a));
+        cout<<"Round #"<<q+1<<"."<<endl;
         cout<<"Your Cards are: ";
         for(int i=0;i<3;i++){
             cout<<a[i]<<" ";
