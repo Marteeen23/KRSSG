@@ -14,7 +14,6 @@ int main()
     struct sockaddr_in serv_addr;
     int i, temp;
 
-    char buffer[256];
     portno = 10000;
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0) 
@@ -27,11 +26,12 @@ int main()
         cout<<"Error connecting"<<endl;
 
     int t;
+    cout<<"Waiting for timesteps..."<<endl;
     read(sockfd, &t, sizeof(t));
     for(int i=0;i<t;i++){
         int randArray[8];
         random0_1(randArray);
-        cout<<"Sending traffic: ";
+        cout<<"Sending traffic-sequence #"<<i+1<<": ";
         for(int j=0;j<8;j++){
             cout<<randArray[j]<<" ";
         }
