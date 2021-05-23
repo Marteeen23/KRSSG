@@ -25,7 +25,7 @@ int main(){
         cout<<"Error connecting"<<endl;
         exit(-1);
     }
-    cout<<"Welcome Tommy Shelby!! You are the Game Setter of The Birmingham Gamblers."<<endl;
+    cout<<"\n\tWelcome Tommy Shelby!! \nYou are the Game Setter of The Birmingham Gamblers."<<endl<<endl;
     int p,r;
     cout<<"Enter number of players: ";
     cin>>p;
