@@ -13,18 +13,18 @@ include_directories( ${OpenCV_INCLUDE_DIRS} )
 add_executable( DisplayImage rrt.cpp )
 target_link_libraries( DisplayImage ${OpenCV_LIBS} )
 ```
-- For the ROS-PID, a CMakeLists.txt file is already included in the repository. Just make sure to put in the same folder as the src folder which has the cpp file.
+- For the ROS-PID, a CMakeLists.txt file is already included in the repository. Just make sure to put in the same folder as the src folder which has the cpp file. Also, make sure to put a copy of the image in the src directory where the code will be present.
 
 ## HOW TO RUN???
 
+- To run the algorithm alone, and just see the path generated, do the following.
 - Open a terminal and go to the directory in which the files are present.
 - Then do the following: 
 ```sh
 make
 ./DisplayImage
 ```
-- The ROS-PID is not implemented together with this algorithm as there is some issue with the code and published values are not showing up.
-- To run ROS-PID code, follow the following steps:
+- To run ROS-PID code which first finds a path and then implements PID to move the turtlesim_node on that path, follow these steps:
 - First, create a workspace directory. Then, create another directory in it and name it "src".
 ```sh
 mkdir catkin_ws
@@ -36,7 +36,7 @@ mkdir src
 cd src
 catkin_create_pkg path_find roscpp std_msgs
 ```
-- This will create a package. Now, put the PID_ROS.cpp and PID_Header.h in the src directory of path_find directory.
+- This will create a package. Now, put the PID_ROS.cpp, PID_Header.h and the motion1.PNG image file in the src directory of path_find directory.
 - You will also see a CMakeLists.txt file in the path_find directory. Just replace its content with the contents of CMakeLists.txt
 - After this, turn on three terminals and in each of them run the following code.
 ```sh
