@@ -34,11 +34,11 @@ Mat binary;
 int **arr;
 int iter = 10000;
 int startX = 50, startY = 40, reachX = 570, reachY = 535;
-int STRIDE = 3, r = 1;
+int STRIDE = 5, r = 1;
 vector<_Node> TREE_A, TREE_B; // Trees from start and goal points
 vector<pair<_Node, int>> COST;
 int m1, m2; // Size of Image
-double y=1.0, d=1.0, n=20.0; //Logarithmic function for subset of TREE
+double y=1.0, d=1.0, n=25.0; //Logarithmic function for subset of TREE
 _Node _source = {startX, startY, -1, -1};
 _Node _goal = {reachX, reachY, -1, -1};
 _Node _new;
@@ -167,7 +167,7 @@ void generateRandom(int i, int *random, vector <_Node> TREE){
 	num1 = (dist1(eng) * r1())%m1;
 	num2 = (dist2(eng) * r2())%m2;
 
-	if(i>5000 && i%2==0){
+	if(i%3==0){
 		num1 = TREE[0].selfX;
 		num2 = TREE[0].selfY;
 	}
@@ -176,7 +176,6 @@ void generateRandom(int i, int *random, vector <_Node> TREE){
 }
 
 int extend(void *POINTER, int *x){
-	cout<<POINTER<<endl;
 	vector<_Node> *TREE;
 	TREE = (vector<_Node>*)POINTER;
 	_Node nearest;
@@ -260,10 +259,9 @@ int connect(vector <_Node> *TREE, _Node x){
 	x_directed = new int[2];
 	x_directed[0] = x.selfX; 
 	x_directed[1] = x.selfY;
-	do{
-		cout<<"Hi!"<<endl;
+	while(s==1){
 		s = extend(TREE, x_directed);
-	}while(s==1);
+	}
 	return s;
 }
 
@@ -399,8 +397,6 @@ int main(){
 	m1 = binary.rows;
 	m2 = binary.cols;
 	arr = new int*[m1];
-	cout<<m1<<" "<<m2<<endl;
-	waitKey(0);
 	for(int i = 0; i < m1; i++){
 		arr[i] = new int[m2];
 	}
