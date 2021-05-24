@@ -150,7 +150,7 @@ void PID_CONTROLLER_update(PID_CONTROLLER *pid){
 	}
 	// Store error and measurement for later use 
 	pid->prevErrorX = errorX;
-    pid->prevErrorY = errorY;
+   	pid->prevErrorY = errorY;
 	pid->prevMeasurementX = measurement[0];
 	pid->prevMeasurementY = measurement[1];
 
@@ -501,7 +501,7 @@ void rrt_star_connect(){
 			}
 			for(int j=0; j<ROUTE.size()-1; j++){
 				cout<<ROUTE[j].first<<" "<<ROUTE[j].second<<endl;
-				V.push_back(make_pair((float)ROUTE[j].first/m1*15.425*11.0, (float)ROUTE[j].second/m2*16.854*11.0));
+				V.push_back(make_pair((float)ROUTE[j].first/m1*11.0, (float)ROUTE[j].second/m2*11.0));
 				Point p1(ROUTE[j].first, ROUTE[j].second), p2(ROUTE[j+1].first, ROUTE[j+1].second);
 				line(image, p1, p2, Scalar(0, 255, 0),2, LINE_8);
 				imshow("TEST IMAGE", image);
@@ -565,7 +565,7 @@ int main(int argc, char**argv){
         vel_publish.publish(vel_msg);
         ros::spinOnce();
         loopRate.sleep();
-		Point p1((int)pid.prevMeasurementX*m1/(15.425*11), (int)pid.prevMeasurementY*m2/(16.854*11)), p2((int)measurement[0]*m1/(15.425*11), (int)measurement[1]*m2/(16.854*11));
+		Point p1((int)pid.prevMeasurementX*m1/(11.0), (int)pid.prevMeasurementY*m2/(11.0)), p2((int)measurement[0]*m1/(11.0), (int)measurement[1]*m2/(11.0));
 		line(image, p1, p2, Scalar(127, 127, 127),2, LINE_8);
 		imshow("TEST IMAGE", image);
 		waitKey(1);
