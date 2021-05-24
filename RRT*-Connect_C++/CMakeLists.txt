@@ -11,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
 )
-
+find_package( OpenCV REQUIRED )
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -117,6 +117,7 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -130,7 +131,7 @@ include_directories(
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 add_executable(turtlesim src/PID_ROS.cpp)
-target_link_libraries(turtlesim ${catkin_LIBRARIES})
+target_link_libraries(turtlesim ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
